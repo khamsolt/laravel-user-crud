@@ -13,3 +13,6 @@ yarn-error.log
 .idea
 /public/css
 /public/js
+*.nginx
+.ide-helper.php
+.phpstorm.meta.php
