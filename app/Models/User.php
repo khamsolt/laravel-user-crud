@@ -73,11 +73,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $fillable = [
         'mood',
         'thumbnail',
@@ -93,21 +89,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'mode',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'birthday_at' => 'date',
         'email_verified_at' => 'datetime',
@@ -117,21 +103,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'mode' => Mode::class,
     ];
 
-    /**
-     * @param Builder $builder
-     * @param Request $request
-     * @return Builder
-     */
     public function scopeFilter(Builder $builder, Request $request): Builder
     {
         return (new Filter($request))->make($builder);
     }
 
-    /**
-     * @param Builder $builder
-     * @param Request $request
-     * @return Builder
-     */
     public function scopeSorting(Builder $builder, Request $request): Builder
     {
         return (new Sorting($request))->make($builder);

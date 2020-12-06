@@ -6,7 +6,6 @@ namespace App\Services\User\Eloquent;
 
 use App\Models\User;
 use App\Repositories\User\Eloquent\Repository as UserRepository;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -47,9 +46,9 @@ class CrudService
         return $user;
     }
 
-    public function findAll(): Collection
+    public function findAll(int $limit, int $offset): Collection
     {
-        $userCollection = $this->userRepository->all(['*']);
+        $userCollection = $this->userRepository->all(['*'], $limit, $offset);
         return $userCollection;
     }
 
