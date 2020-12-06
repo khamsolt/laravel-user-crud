@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Enums\User\Gender;
+use App\Enums\User\Mode;
+use App\Enums\User\Status;
+use App\Enums\User\Type;
 use Eloquent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
@@ -104,5 +108,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'birthday_at' => 'date',
         'email_verified_at' => 'datetime',
+        'gender' => Gender::class . ':nullable',
+        'type' => Type::class,
+        'status' => Status::class,
+        'mode' => Mode::class,
     ];
 }
