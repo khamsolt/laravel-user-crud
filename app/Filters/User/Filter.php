@@ -15,10 +15,7 @@ use App\Filters\StringWithLikeColumn;
  */
 class Filter extends BaseFilter
 {
-    /**
-     * @var array
-     */
-    protected $filters = [
+    protected array $filters = [
         'id' => IntegerWithLikeColumn::class,
         'firstname' => StringWithLikeColumn::class,
         'lastname' => StringWithLikeColumn::class,

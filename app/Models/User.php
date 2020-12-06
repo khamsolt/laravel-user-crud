@@ -6,11 +6,14 @@ use App\Enums\User\Gender;
 use App\Enums\User\Mode;
 use App\Enums\User\Status;
 use App\Enums\User\Type;
+use App\Filters\User\Filter;
+use App\Sorting\User\Sorting;
 use Eloquent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notifiable;
@@ -113,4 +116,24 @@ class User extends Authenticatable implements MustVerifyEmail
         'status' => Status::class,
         'mode' => Mode::class,
     ];
+
+    /**
+     * @param Builder $builder
+     * @param Request $request
+     * @return Builder
+     */
+    public function scopeFilter(Builder $builder, Request $request): Builder
+    {
+        return (new Filter($request))->make($builder);
+    }
+
+    /**
+     * @param Builder $builder
+     * @param Request $request
+     * @return Builder
+     */
+    public function scopeSorting(Builder $builder, Request $request): Builder
+    {
+        return (new Sorting($request))->make($builder);
+    }
 }

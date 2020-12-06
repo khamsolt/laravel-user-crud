@@ -8,7 +8,7 @@ use App\Sorting\Sorting as BaseSorting;
 
 class Sorting extends BaseSorting
 {
-    protected $columns = [
+    protected array $columns = [
         'id',
         'firstname',
         'lastname',

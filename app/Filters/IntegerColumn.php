@@ -9,9 +9,6 @@ use Illuminate\Database\Eloquent\Builder;
 
 class IntegerColumn implements IntegerFilterable
 {
-    /**
-     * @inheritDoc
-     */
     public function filtration(Builder $builder, string $column, int $value): Builder
     {
         return $builder->where($column, $value);

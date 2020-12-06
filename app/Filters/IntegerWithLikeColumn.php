@@ -13,9 +13,6 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class IntegerWithLikeColumn implements IntegerFilterable
 {
-    /**
-     * @inheritDoc
-     */
     public function filtration(Builder $builder, string $column, int $value): Builder
     {
         return $builder->where($column, 'LIKE', "%{$value}%");
