@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\User\CrudController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::name('api.v1.')->prefix('/v1')->group(function () {
+    Route::prefix('/user')->name('user.')->group(function () {
+        Route::apiResource('', CrudController::class);
+    });
 });

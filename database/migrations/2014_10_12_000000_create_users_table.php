@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->text('about')->nullable();
             $table->tinyInteger('status')->default(1);
-            $table->tinyInteger('type')->default(1);
-            $table->tinyInteger('mode')->default(1);
+            $table->tinyInteger('type')->default(0);
+            $table->tinyInteger('mode')->default(0);
             $table->date('birthday_at')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
