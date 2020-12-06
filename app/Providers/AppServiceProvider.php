@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\User\Eloquent\Repository as UserRepository;
+use App\Repositories\Contracts\RepositoryInterface as UserRepositoryInterface;
+use App\Services\User\Eloquent\CrudService as UserCrudService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->singleton('userCrudService', UserCrudService::class);
     }
 
     /**
