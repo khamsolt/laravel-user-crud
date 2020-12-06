@@ -24,7 +24,8 @@ class CrudService
         $user = User::make($data);
         $user->password = Hash::make($data['password']);
         $user->setRememberToken(Str::random(10));
-        $user->sendEmailVerificationNotification();
+//        $user->sendEmailVerificationNotification();
+        $user->saveOrFail();
         return $user;
     }
 

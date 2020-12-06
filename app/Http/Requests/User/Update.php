@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\User;
 
+use Illuminate\Support\Arr;
+
 class Update extends Create
 {
     /**
@@ -22,10 +24,12 @@ class Update extends Create
     public function rules(): array
     {
         $rules = parent::rules();
-        return [
-            ...$rules,
-            'firstname' => 'string|max:50',
-            'lastname' => 'string|max:50',
-        ];
+        return array_merge($rules, [
+                'firstname' => 'string|max:50',
+                'lastname' => 'string|max:50',
+                'email' => 'email|unique:users',
+                'password' => 'string|min:6',
+            ]
+        );
     }
 }

@@ -19,16 +19,18 @@ class Create extends FormRequest
     public function rules(): array
     {
         return [
+            'password'   => 'required|string|min:6|confirmed',
+            'email'      => 'required|email|unique:users',
             'firstname'  => 'required|string|max:50',
             'lastname'   => 'required|string|max:50',
             'patronymic' => 'string|max:50',
-            'gender'     => ['numeric', Rule::in(Gender::toValues())],
-            'birthday'   => 'date',
+            'gender'     => ['string', Rule::in(Gender::toValues())],
+            'birthday_at'=> 'date',
             'mood'       => 'string|max:255',
             'about'      => 'string',
-            'status'     => ['numeric', Rule::in(Status::toValues())],
-            'type'       => ['numeric', Rule::in(Type::toValues())],
-            'mode'       => ['numeric', Rule::in(Mode::toValues())],
+            'status'     => ['integer', Rule::in(Status::toValues())],
+            'type'       => ['integer', Rule::in(Type::toValues())],
+            'mode'       => ['integer', Rule::in(Mode::toValues())],
             'username'   => 'string|unique:users',
         ];
     }

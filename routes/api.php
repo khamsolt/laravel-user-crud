@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::name('api.v1.')->prefix('/v1')->group(function () {
-    Route::prefix('/user')->name('user.')->group(function () {
-        Route::apiResource('', CrudController::class);
+    Route::prefix('/management')->group(function () {
+        Route::apiResource('users', CrudController::class);
     });
 });

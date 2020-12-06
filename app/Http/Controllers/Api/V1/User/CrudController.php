@@ -39,7 +39,8 @@ class CrudController extends Controller
     public function show(int $id): JsonResponse
     {
         $user = $this->crudService->find($id);
-        return new JsonResponse(new Resource($user), Response::HTTP_OK);
+        $resource = new Resource($user);
+        return new JsonResponse($resource, Response::HTTP_OK);
     }
 
     public function update(Update $request, int $id): JsonResponse
