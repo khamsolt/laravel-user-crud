@@ -11,7 +11,7 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self MALE()
  * @method static self FEMALE()
  */
-final class Gender extends Enum
+final class Gender extends \App\Enums\Enum
 {
     protected static function values(): array
     {

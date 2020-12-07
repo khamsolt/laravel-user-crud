@@ -12,7 +12,7 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self ACTIVE()
  * @method static self INACTIVE()
  */
-final class Status extends Enum
+final class Status extends \App\Enums\Enum
 {
     protected static function values(): array
     {

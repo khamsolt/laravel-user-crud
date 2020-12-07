@@ -14,7 +14,7 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self MANAGER()
  *
  */
-final class Type extends Enum
+final class Type extends \App\Enums\Enum
 {
     protected static function values(): array
     {

@@ -73,6 +73,9 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
+    protected $attributes = [
+        'type' => 1,
+    ];
 
     protected $fillable = [
         'mood',
@@ -99,9 +102,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'birthday_at' => 'date',
         'email_verified_at' => 'datetime',
         'gender' => Gender::class . ':nullable',
-        'type' => Type::class,
-        'status' => Status::class,
-        'mode' => Mode::class,
+        'type' => Type::class . ':nullable',
+        'status' => Status::class . ':nullable',
+        'mode' => Mode::class . ':nullable',
     ];
 
     public function scopeFilter(Builder $builder, Request $request): Builder

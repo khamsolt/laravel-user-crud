@@ -13,6 +13,7 @@ class Repository implements RepositoryInterface
     public function all(array $columns, int $limit = 20, int $offset = 0): Collection
     {
         return User::select($columns)
+            ->latest()
             ->limit($limit)
             ->offset($offset)
             ->get();

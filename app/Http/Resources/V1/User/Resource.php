@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1\User;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,14 +23,19 @@ class Resource extends JsonResource
             'firstname' => $this->firstname,
             'lastname' => $this->lastname,
             'patronymic' => $this->patronymic,
-            'gender' => $this->gender->label,
+            'gender' => $this->gender,
             'about' => $this->about,
-            'type' => $this->type->label,
-            'status' => $this->status->label,
-            'mode' => $this->mode->label,
-            'birthday' => $this->birthday_at,
-            'verivied' => $this->email_verified_at,
+            'type' => $this->type,
+            'status' => $this->status,
+            'mode' => $this->mode,
+            'birthday' => $this->getDate($this->birthday_at, 'd.m.Y'),
+            'verified' => $this->getDate($this->email_verified_at, 'd.m.Y H:i:s'),
             'created' => $this->created_at
         ];
+    }
+
+    public function getDate(?string $value, string $format = "U"): ?string
+    {
+        return empty($value) ? null : $this->birthday_at->format($format);
     }
 }

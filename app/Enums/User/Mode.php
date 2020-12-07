@@ -13,7 +13,7 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self TESTER()
  * @method static self OWNER()
  */
-final class Mode extends Enum
+final class Mode extends \App\Enums\Enum
 {
     protected static function values(): array
     {
